@@ -169,6 +169,8 @@ console.log(yes) // !
 
 */
 
+/**
+
 // Array
 
 let makananFavorit = ["Mie Ayam", "Seblak", "Bakso"];
@@ -185,4 +187,103 @@ let biodataObject = {
     }
 }
 
-console.log(biodataObject);
+*/
+
+/** 
+
+// return values
+
+alert("Ini adalah sebuah alert")
+console.log(Math.round(1));
+
+*/
+
+/** 
+ 
+// Control Flow
+
+let yourName = String(prompt("What is your name?"));
+
+alert(`Your name is ${yourName}?`)
+
+*/
+
+/** 
+// Conditional Execution
+
+// if else
+let tahunLahir = Number(prompt("Kapan tahun lahir kamu?")); 
+
+// if (2023 - tahunLahir < 18) {
+//     alert("Kamu dibawah umur");
+// } else if(2023 - tahunLahir > 18 && 2023 - tahunLahir <= 40) {
+//     alert('Kamu sudah dewasa')
+// } else if(2023 - tahunLahir > 40) {
+//     alert('Kamu sudah tua')
+// } else{
+//     alert('Kamu sudah meninggal')
+// }
+
+// ternary Operator (digunakan ketika dua cabang saja)
+//2020 - tahunLahir < 17 ? alert("Kamu dibawah umur") : alert("Kamu sudah dewasa"); //react
+
+*/
+
+/**
+ * 
+// Switch case
+
+let cuacaHariIni = prompt("Bagaimana cuaca hari ini?");
+
+switch (cuacaHariIni) {
+    case "hujan":
+        alert("Silahkan diam dirumah saja");
+        break;
+    case "mendung":
+        alert("Jangan lupa bawa payung");
+        break;
+    case "berawan":
+        alert("Silahkan main diluar");
+        break;
+    case "panas":
+        alert("hati-hati gosong");
+        break;        
+    default:
+        alert("cuaca tidak dapat diramal");
+        break;
+}
+
+*/
+
+/** 
+
+// Looping
+
+let count = 0;
+
+// While
+
+// while (count <= 12) {
+//     console.log(count)
+//     count = count + 1;
+// }
+
+// Do While
+
+// do {
+//     console.log(count);
+//     count = count + 2;
+// } while(count <= 12)
+
+*/
+
+// For Loops
+
+// for (let i = 0; i <= 100; i++) {
+//     console.log(i); 
+// }
+
+for (let i = "*****"; i.length = 1; i = i - "*") {
+    console.log(i)
+    
+}
