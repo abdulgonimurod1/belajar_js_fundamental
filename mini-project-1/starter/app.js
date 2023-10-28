@@ -1,3 +1,17 @@
+
+const changeProjectHeadingTitle = (title) => {
+   const projectTitle =  document.querySelector(".heading-title");
+
+    if (typeof title === 'string') {
+        projectTitle.textContent = title;
+    } else {
+        console.error("argumen not string")
+    }
+}
+    
+changeProjectHeadingTitle("Javascript is Cool")
+
+
 // var fullName = " Abdul Goni Murod";
 // var greeting  = "Hello";
 
@@ -22,8 +36,7 @@
 
 // console.log(i);
 
-const projectTitle = document.querySelector('.heading-title');
-projectTitle.textContent = "Title Baru dari JS File";
+
 
 // var thisIsFunction = "function";
 
@@ -276,14 +289,47 @@ let count = 0;
 // } while(count <= 12)
 
 */
-
+/** 
 // For Loops
 
-// for (let i = 0; i <= 100; i++) {
-//     console.log(i); 
-// }
+for (let i = 0; i <= 100; i++) {
+    console.log(i); 
+}
 
 for (let i = "*****"; i.length = 1; i = i - "*") {
     console.log(i)
     
 }
+
+*/
+/** 
+// Functions
+
+// Function definition
+
+const perpangkatan = function(n){
+    if (n == undefined) {
+        return 2 * 2
+    }
+
+    return n * n
+}
+
+// ES6 Arrow Function
+
+const perpangkatan = (n = 2) => {
+    return n * n
+}
+
+const perpangkatan = n => n * n; // versi satu line
+
+// Function side-effect
+
+function sayHello(){
+    alert("Hello!")
+}
+
+console.log(perpangkatan(5));
+
+*/
+
