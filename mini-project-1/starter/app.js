@@ -1,17 +1,4 @@
 
-const changeProjectHeadingTitle = (title) => {
-   const projectTitle =  document.querySelector(".heading-title");
-
-    if (typeof title === 'string') {
-        projectTitle.textContent = title;
-    } else {
-        console.error("argumen not string")
-    }
-}
-    
-changeProjectHeadingTitle("Javascript is Cool")
-
-
 // var fullName = " Abdul Goni Murod";
 // var greeting  = "Hello";
 
@@ -333,3 +320,75 @@ console.log(perpangkatan(5));
 
 */
 
+// Array
+
+// const array = [1, 2, 3,4,5]
+
+// for (let i = 0; i < array.length; i++) {
+//     array[i] = array[i] * 2 
+// }
+
+// console.log(array)
+
+// console.log(array[0] = "satu")
+// console.log(array)
+
+// Push method
+// array.push(6);
+
+// console.log(array);
+
+// Pop Method
+
+// array.pop()
+
+// console.log(array);
+
+// Unshift method
+
+// array.unshift(0);
+
+// console.log(array)
+
+// Shift method
+
+// array.shift();
+
+// console.log(array)
+
+// Slice
+
+
+// let hewanYangDitangkap = animals.slice(2)
+
+// console.log(hewanYangDitangkap)
+
+// Splice
+
+// animals.splice(2, 1, "Anjing");
+
+// animals.splice(1,2);
+
+// console.log(animals);
+
+// forEach
+
+// const animals = ["Kucing","Jerapah","Kambing","Kuda",]
+
+// animals.forEach(myFunction)
+
+// function myFunction(value){
+//     console.log(value + ' hidup')
+// }
+
+// Map
+
+const numbers = [10,20,30,40,50]
+
+const numbersMultiplied = numbers.map(multiply)
+
+function multiply(value) {
+    return value * 2
+}
+
+console.log(numbersMultiplied)
