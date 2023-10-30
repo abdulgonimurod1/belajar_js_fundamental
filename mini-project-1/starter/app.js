@@ -383,12 +383,109 @@ console.log(perpangkatan(5));
 
 // Map
 
-const numbers = [10,20,30,40,50]
+// const numbers = [10,20,30,40,50]
 
-const numbersMultiplied = numbers.map(multiply)
+// const numbersMultiplied = numbers.map(multiply)
 
-function multiply(value) {
-    return value * 2
-}
+// function multiply(value) {
+//     return value * 2
+// }
 
-console.log(numbersMultiplied)
+// console.log(numbersMultiplied)
+
+// Filter
+
+// const age = [25, 9, 10, 11, 15, 28, 30];
+
+// const filterAge = age.filter(myFunction)
+
+// function myFunction(value) {
+//     return value >= 17 
+// }
+
+// console.log(filterAge)
+
+// Object
+
+// const person = {
+//     name:{
+//         firstName: "Abdul",
+//         lastName: "Goni",
+//     },
+//     age: 21,
+//     nationality: "Indonesia"
+// }
+
+// const person2 = new Object()
+// person2.firstName = "Abdul";
+// person2.lastName = "Patah";
+// person2.age = 23;
+// person2.nationality = "Indonesia";
+
+// console.log(person)
+
+// Add & Edit Properties in Object
+
+// person.hairColor = "Black";
+// person.name.lastName = "Murod"
+
+// const personName = person.name.firstName
+
+// Delete Property Object
+
+// delete person.nationality
+
+// Object Keys
+
+// const objects = {a:1, b:2, c:3}
+
+// console.log(Object.keys(objects))
+
+// Object Assign
+
+// const object1 = {a:1, b:2, c:3};
+// const object2 = {c:4, d:9};
+
+// Object.assign(object1,object2);
+
+// console.log(object1)
+
+// Array of Objects
+
+const todos = [
+    {
+        text: "Ini adalah tugas 1",
+        isCompleted: false
+    },
+    {
+        text: "Ini adalah tugas 2",
+        isCompleted: true
+    },
+    {
+        text: "Ini adalah tugas 3",
+        isCompleted: false
+    },
+    {
+        text: "Ini adalah tugas 4",
+        isCompleted: true
+    }
+];
+
+// const unCompletedTask = todos.filter(myFunction);
+
+// function myFunction(value){
+//     if (value.isCompleted === false) {
+//         return value
+//     }
+// }
+
+// Versi Arrow Function
+
+const unCompletedTask = todos.filter(value => {
+    if (value.isCompleted === true) {
+        return value
+    }
+});
+
+
+console.log(unCompletedTask)
