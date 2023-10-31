@@ -452,24 +452,24 @@ console.log(perpangkatan(5));
 
 // Array of Objects
 
-const todos = [
-    {
-        text: "Ini adalah tugas 1",
-        isCompleted: false
-    },
-    {
-        text: "Ini adalah tugas 2",
-        isCompleted: true
-    },
-    {
-        text: "Ini adalah tugas 3",
-        isCompleted: false
-    },
-    {
-        text: "Ini adalah tugas 4",
-        isCompleted: true
-    }
-];
+// const todos = [
+//     {
+//         text: "Ini adalah tugas 1",
+//         isCompleted: false
+//     },
+//     {
+//         text: "Ini adalah tugas 2",
+//         isCompleted: true
+//     },
+//     {
+//         text: "Ini adalah tugas 3",
+//         isCompleted: false
+//     },
+//     {
+//         text: "Ini adalah tugas 4",
+//         isCompleted: true
+//     }
+// ];
 
 // const unCompletedTask = todos.filter(myFunction);
 
@@ -481,11 +481,61 @@ const todos = [
 
 // Versi Arrow Function
 
-const unCompletedTask = todos.filter(value => {
-    if (value.isCompleted === true) {
-        return value
-    }
-});
+// const unCompletedTask = todos.filter(value => {
+//     if (value.isCompleted === true) {
+//         return value
+//     }
+// });
+
+// console.log(unCompletedTask)
 
 
-console.log(unCompletedTask)
+
+// Scope
+
+// Global Scope
+
+// var globalVar = "global variable"
+
+// console.log(window.globalVar)
+
+// const name = "Abdul Goni Murod" //Global Scope
+
+// Local Scope
+// function myFunction(){
+//     const name = "Abdul Goni"
+
+//     console.log(name)
+// }
+
+// myFunction()
+
+
+
+// Hoisting
+
+// Hoisting Variable
+
+// x = 10; // assigning
+// y = 30; // assigning
+
+
+// var x; // declaration
+
+// var y = 7 // variable initialization
+
+// Hoisting Function
+
+
+// function declaration
+// function myFunction() {
+//     console.log("hello hoisting")
+// }
+
+// function expression or definition
+
+var myFunctionExp = function(){
+    console.log("Hello hoisting")
+}
+
+console.log(myFunctionExp());
