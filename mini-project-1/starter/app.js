@@ -534,8 +534,46 @@ console.log(perpangkatan(5));
 
 // function expression or definition
 
-var myFunctionExp = function(){
-    console.log("Hello hoisting")
-}
+// var myFunctionExp = function(){
+//     console.log("Hello hoisting")
+// }
 
-console.log(myFunctionExp());
+// console.log(myFunctionExp());
+
+
+
+// Kumpulkan semua UI element
+
+const todoForm = document.querySelector("#todo-form");
+const todoInput = document.querySelector("#todo-input");
+const filterInput = document.querySelector("#filter-input");
+const todoList = document.querySelector("#todo-list");
+const clearButton = document.querySelector("#clear-todos");
+
+
+todoForm.addEventListener("submit", addTodo);
+
+function addTodo(e){
+    e.preventDefault();
+
+    // Membuat li element
+
+    const li = document.createElement("li")
+    li.className = "list-group-item d-flex justify-content-between align-items-center mb-1"
+
+    // Menambahkan children ke dalam element li
+    li.appendChild(document.createTextNode("Value dari task input"));
+    // Membuat delete button
+    const a = document.createElement("a")
+
+    // memberi property untuk a element
+    a.href = "#"
+    a.className = "badge badge-danger"
+
+    a.innerHTML = "Delete"
+
+    // menyelipkan element a ke dalam children li
+
+    li.appendChild(a)
+    console.log(li)
+}
