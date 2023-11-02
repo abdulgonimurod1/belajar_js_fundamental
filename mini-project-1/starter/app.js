@@ -552,6 +552,8 @@ const clearButton = document.querySelector("#clear-todos");
 
 
 todoForm.addEventListener("submit", addTodo);
+todoList.addEventListener("click", deleteTodo);
+
 
 function addTodo(e){
     e.preventDefault();
@@ -562,18 +564,39 @@ function addTodo(e){
     li.className = "list-group-item d-flex justify-content-between align-items-center mb-1"
 
     // Menambahkan children ke dalam element li
-    li.appendChild(document.createTextNode("Value dari task input"));
+    li.appendChild(document.createTextNode(todoInput.value));
     // Membuat delete button
     const a = document.createElement("a")
 
     // memberi property untuk a element
     a.href = "#"
-    a.className = "badge badge-danger"
+    a.className = "badge badge-danger delete-todo"
 
     a.innerHTML = "Delete"
 
     // menyelipkan element a ke dalam children li
 
     li.appendChild(a)
-    console.log(li)
+
+    // Memasaukkan elemen li yang telah dibuat dengan javascript
+    // ke dalam elemen todolist
+    todoList.appendChild(li)    
+
+    todoInput.value = ""
 }
+
+function deleteTodo(e){
+    e.preventDefault();
+
+    if(e.target.classList.contains("delete-todo")) {
+
+        if(confirm("Apakah yakin akan menghapus?")){
+
+            const parent = e.target.parentElement;
+    
+            parent.remove();
+            
+        }
+    }
+}
+
