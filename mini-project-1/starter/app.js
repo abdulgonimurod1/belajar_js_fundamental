@@ -553,36 +553,43 @@ const clearButton = document.querySelector("#clear-todos");
 
 todoForm.addEventListener("submit", addTodo);
 todoList.addEventListener("click", deleteTodo);
+clearButton.addEventListener("click", clearTodos);
 
 
 function addTodo(e){
     e.preventDefault();
 
-    // Membuat li element
+    if (todoInput.value) {
+        
+            // Membuat li element
+        
+            const li = document.createElement("li")
+            li.className = "list-group-item d-flex justify-content-between align-items-center mb-1"
+        
+            // Menambahkan children ke dalam element li
+            li.appendChild(document.createTextNode(todoInput.value));
+            // Membuat delete button
+            const a = document.createElement("a")
+        
+            // memberi property untuk a element
+            a.href = "#"
+            a.className = "badge badge-danger delete-todo"
+        
+            a.innerHTML = "Delete"
+        
+            // menyelipkan element a ke dalam children li
+        
+            li.appendChild(a)
+        
+            // Memasaukkan elemen li yang telah dibuat dengan javascript
+            // ke dalam elemen todolist
+            todoList.appendChild(li)    
+        
+            todoInput.value = ""
 
-    const li = document.createElement("li")
-    li.className = "list-group-item d-flex justify-content-between align-items-center mb-1"
-
-    // Menambahkan children ke dalam element li
-    li.appendChild(document.createTextNode(todoInput.value));
-    // Membuat delete button
-    const a = document.createElement("a")
-
-    // memberi property untuk a element
-    a.href = "#"
-    a.className = "badge badge-danger delete-todo"
-
-    a.innerHTML = "Delete"
-
-    // menyelipkan element a ke dalam children li
-
-    li.appendChild(a)
-
-    // Memasaukkan elemen li yang telah dibuat dengan javascript
-    // ke dalam elemen todolist
-    todoList.appendChild(li)    
-
-    todoInput.value = ""
+    }  else {
+        alert("Todo tidak boleh kosong!")
+    }
 }
 
 function deleteTodo(e){
@@ -598,5 +605,9 @@ function deleteTodo(e){
             
         }
     }
+}
+
+function clearTodos(e){
+    todoList.innerHTML = ""
 }
 
