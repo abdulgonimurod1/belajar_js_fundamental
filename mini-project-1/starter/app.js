@@ -551,12 +551,17 @@ const todoList = document.querySelector("#todo-list");
 const clearButton = document.querySelector("#clear-todos");
 
 
+// Ini adalah kumpulan eventListener
+
 todoForm.addEventListener("submit", addTodo);
 todoList.addEventListener("click", deleteTodo);
 clearButton.addEventListener("click", clearTodos);
+filterInput.addEventListener("keyup", filterTodos);
 
 
-function addTodo(e){
+// ini adalah DOM functions
+
+function addTodo(e) {
     e.preventDefault();
 
     if (todoInput.value) {
@@ -564,7 +569,7 @@ function addTodo(e){
             // Membuat li element
         
             const li = document.createElement("li")
-            li.className = "list-group-item d-flex justify-content-between align-items-center mb-1"
+            li.className = "list-group-item d-flex justify-content-between align-items-center mb-1 todo-item"
         
             // Menambahkan children ke dalam element li
             li.appendChild(document.createTextNode(todoInput.value));
@@ -585,14 +590,31 @@ function addTodo(e){
             // ke dalam elemen todolist
             todoList.appendChild(li)    
         
+            addTodoLocalStorage(todoInput.value);
+            
             todoInput.value = ""
+
 
     }  else {
         alert("Todo tidak boleh kosong!")
     }
 }
 
-function deleteTodo(e){
+function addTodoLocalStorage(todoInputValue) {
+    let todos;
+
+    if (localStorage.getItem("todos") == null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+
+    todos.push(todoInputValue)
+
+    localStorage.setItem("todos", JSON.stringify(todos))
+}
+
+function deleteTodo(e) {
     e.preventDefault();
 
     if(e.target.classList.contains("delete-todo")) {
@@ -607,7 +629,25 @@ function deleteTodo(e){
     }
 }
 
-function clearTodos(e){
+function clearTodos(e) {
     todoList.innerHTML = ""
 }
 
+function filterTodos(e) {
+    const filterText = e.target.value.toLowerCase();
+    const todoItems = document.querySelectorAll(".todo-item");
+
+    todoItems.forEach((item) => {
+        const itemText = item.firstChild.textContent.toLowerCase();
+
+        if(itemText.indexOf(filterText) !== -1) {
+            item.setAttribute("style", "display: block;")
+        } else {
+            item.setAttribute("style", "display: none !important;")
+        }
+
+
+    })
+
+    // console.log(todoItems)
+}
