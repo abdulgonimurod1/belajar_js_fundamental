@@ -553,42 +553,84 @@ const clearButton = document.querySelector("#clear-todos");
 
 // Ini adalah kumpulan eventListener
 
-todoForm.addEventListener("submit", addTodo);
-todoList.addEventListener("click", deleteTodo);
-clearButton.addEventListener("click", clearTodos);
-filterInput.addEventListener("keyup", filterTodos);
+immediateLoadEvenetListener()
 
+function immediateLoadEvenetListener(){
 
+    // mendapatkan todos dari local storage dan render di browser
+    document.addEventListener("DOMContentLoaded", getTodos);
+
+    // ini adalah event untuk menambahkan todo
+    todoForm.addEventListener("submit", addTodo);
+
+    // ini adalah event untuk menghapus satu todo
+    todoList.addEventListener("click", deleteTodo);
+
+    // ini adalah event untuk mengahpus semua todo
+    clearButton.addEventListener("click", clearTodos);
+
+    // ini adalah event untuk memfilter todos
+    filterInput.addEventListener("keyup", filterTodos);
+}
+
+// Reusable codes
+
+function createTodoElement(value){
+     // Membuat li element
+        
+     const li = document.createElement("li")
+            
+     li.className = "list-group-item d-flex justify-content-between align-items-center mb-1 todo-item"
+ 
+     // Menambahkan children ke dalam element li
+     li.appendChild(document.createTextNode(value));
+     // Membuat delete button
+     const a = document.createElement("a")
+ 
+     // memberi property untuk a element
+     a.href = "#"
+     a.className = "badge badge-danger delete-todo"
+ 
+     a.innerHTML = "Delete"
+ 
+     // menyelipkan element a ke dalam children li
+ 
+     li.appendChild(a)
+ 
+     // Memasaukkan elemen li yang telah dibuat dengan javascript
+     // ke dalam elemen todolist
+     todoList.appendChild(li)    
+}
+
+function getItemFromLocalStorage(){
+    let todos;
+
+    if (localStorage.getItem("todos") == null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+
+    return todos;
+}
 // ini adalah DOM functions
+
+function getTodos() {
+
+    const todos = getItemFromLocalStorage();
+
+    todos.forEach((todo) => {
+        createTodoElement(todo)
+    })
+
+}
 
 function addTodo(e) {
     e.preventDefault();
 
     if (todoInput.value) {
         
-            // Membuat li element
-        
-            const li = document.createElement("li")
-            li.className = "list-group-item d-flex justify-content-between align-items-center mb-1 todo-item"
-        
-            // Menambahkan children ke dalam element li
-            li.appendChild(document.createTextNode(todoInput.value));
-            // Membuat delete button
-            const a = document.createElement("a")
-        
-            // memberi property untuk a element
-            a.href = "#"
-            a.className = "badge badge-danger delete-todo"
-        
-            a.innerHTML = "Delete"
-        
-            // menyelipkan element a ke dalam children li
-        
-            li.appendChild(a)
-        
-            // Memasaukkan elemen li yang telah dibuat dengan javascript
-            // ke dalam elemen todolist
-            todoList.appendChild(li)    
+           createTodoElement(todoInput.value)
         
             addTodoLocalStorage(todoInput.value);
             
@@ -601,13 +643,7 @@ function addTodo(e) {
 }
 
 function addTodoLocalStorage(todoInputValue) {
-    let todos;
-
-    if (localStorage.getItem("todos") == null) {
-        todos = [];
-    } else {
-        todos = JSON.parse(localStorage.getItem("todos"));
-    }
+    const todos = getItemFromLocalStorage();
 
     todos.push(todoInputValue)
 
@@ -619,14 +655,28 @@ function deleteTodo(e) {
 
     if(e.target.classList.contains("delete-todo")) {
 
-        if(confirm("Apakah yakin akan menghapus?")){
+        if(confirm("Apakah yakin akan menghapus?")) {
 
             const parent = e.target.parentElement;
     
             parent.remove();
+
+            deleteTodoLocalStorage(parent)
             
         }
     }
+}
+
+function deleteTodoLocalStorage(deletedElement) {
+    const todos = getItemFromLocalStorage(); //menghapus element parent
+    
+    todos.forEach((todo, index) => {
+        if (deletedElement.firstChild.textContent === todo) {
+            todos.splice(index, 1)
+        }
+    }) 
+
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 function clearTodos(e) {
