@@ -680,7 +680,13 @@ function deleteTodoLocalStorage(deletedElement) {
 }
 
 function clearTodos(e) {
-    todoList.innerHTML = ""
+    todoList.innerHTML = "";
+
+    clearTodosLocalStorage();
+}
+
+function clearTodosLocalStorage() {
+    localStorage.clear()
 }
 
 function filterTodos(e) {
